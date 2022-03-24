@@ -102,32 +102,6 @@ export class AdminAddUserComponent implements OnInit{
    }
   }
 
-  
-  // delTask(_id:string){
-  //   if(confirm(`Are you sure to delete this task?`)==true){
-  //     this.aS.deleteTask(_id).subscribe((res)=>{
-  //       console.log(res);
-        
-  //     }) 
-  //     alert("Deleted Successfully");
-  //   }
-  // }
-
-  // editTask(_UserID:string,_id:string){
-  //   this.aS.updateTask(this.listId,this.taskId).subscribe(()=>{
-  //     console.log("Completed successfully");
-  //     _id.completed = true
-  //   })
-  // }
-
-  // userTask(){
-  //   this.aS.addUserTask(this.ToDoForm.value).subscribe((data) => {
-  //     console.log(data);  
-  //     this.users = data;
-  //   });
-  //   alert('Task Saved...!!');
-  //   this.ToDoForm.reset()  
-  // }
   }
 
 

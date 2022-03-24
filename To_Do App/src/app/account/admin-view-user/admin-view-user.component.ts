@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Admininfo } from '../admininfo';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { interval, Observable, timer } from 'rxjs';
+import { map, take, takeUntil, tap } from 'rxjs/operators';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -31,6 +31,20 @@ export class AdminViewUserComponent implements OnInit {
     this.aS.getAllUsers().subscribe((data: any) => {
       this.users = data;
     });
+
+    
+    //emit value every 1s
+    const source = interval(1000);
+    const timer$ = timer(5000);
+    const example = source.pipe(takeUntil(timer$));
+    const subscribe = example.subscribe(val => console.log(val));
+    
+    // this.aS.getAllUsers()
+    // interval(5000)
+    // .pipe(takeUntil(this.user$))
+    // .subscribe((data: any) => {
+    //   this.users = data;
+    // });
   }
   
   logout(): void{

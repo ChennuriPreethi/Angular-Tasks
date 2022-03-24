@@ -48,34 +48,6 @@ export class EditTaskComponent implements OnInit {
     })
   }
 
-    // this.setFormState();
-  // setFormState(): void {
-  //   this.ToDoEditForm = this.fB.group({
-  //     task: [''],
-  //     description: ['']
-  //   })
-  // }
-
-  // updateTask(_id:string) {
-  //   this.aS.updateTask(this.selectedlistId,_id).subscribe((res:any) => {
-  //     console.log(res);
-  //     this.rT.navigate(['/users']);
-  //   })
-  // }
-
-  // onUpdateClick(admininfo:Admininfo){
-  //   // this.aS.updateTask(admininfo).subscribe(()=>{
-  //   //   console.log("Completed Successfully");
-  //   //   admininfo.task,
-  //   //   admininfo.description,
-  //   //   admininfo.date;
-  //   // })
-  //   this.aS.updateTask(admininfo).subscribe((res:any) => {
-  //         console.log(res);
-  //         this.rT.navigate(['/users']);
-  //       })
-  // }
-
 
   updateTask() {
    
@@ -86,24 +58,5 @@ export class EditTaskComponent implements OnInit {
     alert("Updated Successfully");
   }
   
-  // onSave() {
-    
-  //   let adinfo = this.ToDoEditForm.value;
-  //   // console.log(adinfo);
-  //   this.adminAccount(adinfo);
-  //   this.ToDoEditForm.reset();
-  // }
-
-  // adminAccount(admininfo:Admininfo) {
-  //   this.aS.updateTask(this.selectedlistId,this.taskId).subscribe(
-  //     (doc:any) => {
-  //       let response=JSON.stringify(doc);
-  //       console.log(doc);
-  //       this.datasaved = true;
-  //       this.message = doc['msg'];
-  //       this.status = doc['status'];
-  //      this.ToDoEditForm.reset();
-  //     }
-  //   )
-  // }
+  
 }
