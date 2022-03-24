@@ -36,9 +36,12 @@ export class AdminViewUserComponent implements OnInit {
     //emit value every 1s
     const source = interval(1000);
     const timer$ = timer(5000);
-    const example = source.pipe(takeUntil(timer$));
+    const example = source.pipe(takeUntil(timer$),take(3));
     const subscribe = example.subscribe(val => console.log(val));
     
+
+
+
     // this.aS.getAllUsers()
     // interval(5000)
     // .pipe(takeUntil(this.user$))
