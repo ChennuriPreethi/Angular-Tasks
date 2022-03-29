@@ -3,6 +3,7 @@ export class Accinfo {
     name: any;
     email: any;
     password: any;
+    image:any;
     role:any;
     date:any;
     msg:any;

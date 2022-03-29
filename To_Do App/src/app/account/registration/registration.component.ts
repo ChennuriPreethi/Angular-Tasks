@@ -27,7 +27,8 @@ export class RegistrationComponent implements OnInit {
     this.regForm = this.fB.group({
       name: ['', [Validators.required, Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]*$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),Validators.minLength(1)]],
-      password: ['', [Validators.required, Validators.maxLength(20)]]
+      password: ['', [Validators.required, Validators.maxLength(20)]],
+      image:['',[Validators.required]]
     })
   }
  

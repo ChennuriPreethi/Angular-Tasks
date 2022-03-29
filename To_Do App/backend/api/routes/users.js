@@ -3,6 +3,25 @@ var userModel = require('../models/user');
 var adminModel = require('../models/admin');
 var router = express.Router();
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+
+
+//storage for images
+
+const Storage = multer.diskStorage({
+  destination: function(req,file,callback){
+    callback(null,"./public/Uploads/Images");
+  },
+  filename:function(req,file,callback){
+    callback(null,file.fieldname+"_"+Date.now()+"_"+file.originalname);
+  }
+})
+
+//Upload parameter for multer
+
+var upload = multer({
+  storage:Storage,
+}).single("image");
 
 // Email Validation
 
@@ -23,7 +42,7 @@ function checkEmail(req,res,next){
 
 // User Registration
 
-router.post('/users', checkEmail, function(req, res, next) {
+router.post('/users',upload, checkEmail, function(req, res, next) {
   bcrypt.hash(req.body.password, 10, function(err, hash) {
     if(err){
       res.status(400).json({
@@ -36,6 +55,7 @@ router.post('/users', checkEmail, function(req, res, next) {
         name: req.body.name,
         email: req.body.email,
         password: hash,
+        image: req.file.filename,
         role:'Employee'
       });
      
@@ -133,49 +153,5 @@ router.get('/users/:listId/tasksss', (req, res, next)=> {
 
 
 
-
-
-
-// router.patch('/users/:listId/tasks/:taskId',(req,res)=>{
-//   adminModel.findOneAndUpdate({
-//     _id:req.params.taskId,
-//     _UserID:req.params.listId
-//   }, {
-//         $set: req.body
-//     }
-//   ).then(()=>{
-//     res.send({message:'Updated'});
-//   })
-// });
-
-// router.get('/users', (req, res, next)=> {
-// adminModel.find(function(err,user){
-//   res.json(user);
-// })
-// });
-
-
-
-/* GET single tasks. */
-
-// router.get('/taskss/:listId/tasks/:taskId', (req, res, next)=> {
-//   adminModel.findOne({
-//     _id:req.params.taskId,
-//     _UserID:req.params.listId
-//   }).then((task)=>{
-//     res.send(task);
-//   })
-
-
-
-
-// var adminDetails=new adminModel({
-//   task: 'Eat',
-//   description: 'Food'
-// });
-// adminDetails.save(function(err,req1){
-//   if(err) throw err;
-//   res.render('index',{title:'Task inserted successfully'});
-// })
 
 module.exports = router;

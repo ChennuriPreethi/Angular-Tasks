@@ -5,7 +5,7 @@
             <img src="../../../assets/Images/checklist1.gif" style="float: right;margin-top: 15%;" class="rounded-circle img-fluid" alt="" />
         </div>
         
-          <div class="col-md-7">
+          <div class="col-md-7" style="margin-top: -6%;">
               <div class="login-box">
                 <h1>User Registration</h1>
                 <div *ngIf="status=='success'; else errorStatus">
@@ -19,7 +19,7 @@
                    </div>
               </ng-template>
 
-                  <form (ngSubmit)="onSubmit()" [formGroup]="regForm">
+                  <form (ngSubmit)="onSubmit()" [formGroup]="regForm" enctype="multipart/form-data">
                     <div class="row mt-4">
                       <div class="form-group form-row">
                           <label class="col-md-3">Name <span class="required" style="color:red">*</span></label>
@@ -47,6 +47,17 @@
                           </div>
                       </div>
                     </div>
+
+                    <div class="row mt-4">
+                      <div class="form-group form-row">
+                          <label class="col-md-3">Profile Picture <span class="required" style="color:red">*</span></label>
+                          <div class="col-md-9">
+                            <input type="file" formControlName="image" class="form-control" placeholder="Profile Picture" required="">
+                            <span *ngIf="!regForm.get('image').valid && regForm.get('image').touched" style="color:red">Please Upload an image...!!!</span>
+                          </div>
+                      </div>
+                    </div>
+
                       <div class="row mt-4">
                         <div class="form-group">
                           <button type="submit" [disabled]="!regForm.valid" class="btn btn-success">Register</button>&nbsp;

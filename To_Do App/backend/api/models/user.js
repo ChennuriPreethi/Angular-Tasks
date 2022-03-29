@@ -23,6 +23,7 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  image: String,
   role:  {
     type:String, 
     required: true
